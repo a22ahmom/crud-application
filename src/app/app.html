@@ -1,21 +1,23 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div class="container">
+  <button>Lägg till ny bok</button>
+</div>
 
+<div class="form-container">
 
+  <h2>Ny bok</h2>
 
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+  <form>
+    <label for="title">Titel</label>
+    <input type="text" id="title" placeholder="Skriv bokens titel">
 
+    <label for="author">Författare</label>
+    <input type="text" id="author" placeholder="Skriv bokens författare">
+
+    <label for="publication_date">Publiceringsdatum</label>
+    <input type="date" id="publication_date" placeholder="Skriv bokens publiceringsdatum">
+
+    <button type="submit">Skapa</button>
+  </form>
+</div>
 
 <router-outlet />
