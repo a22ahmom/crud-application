@@ -4,6 +4,11 @@ import { BookList } from './book-list/book-list';
 
 export const routes: Routes = [
     {
+        path: '',
+        redirectTo: 'books',
+        pathMatch: 'full'
+    },
+    {
         path: 'books/new',
         component: AddBook
     },
