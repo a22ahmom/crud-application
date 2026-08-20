@@ -8,18 +8,26 @@
 
 <h2>Mina böcker</h2>
 
-@for (book of bookService.books; track $index) {
+<div class="book-list">
+    @for (book of bookService.books; track $index) {
 
-    <div class="book">
+    <div class="book-item">
+        <div class="book-info">
 
-        <h3>{{ book.title }}</h3>
+            <h3>{{ book.title }}</h3>
 
-        <p>
-            Författare: {{ book.author }}
-        </p>
+            <p>
+                <strong>
+                    Författare: {{ book.author }}
+                </strong>
+            </p>
 
-        <p>
-            Publicerad: {{ book.publicationDate }}
-        </p>
+            <p>
+                <strong>
+                    Publicerad: {{ book.publicationDate }}
+                </strong>
+            </p>
+        </div>
     </div>
-}
+    }
+</div>
