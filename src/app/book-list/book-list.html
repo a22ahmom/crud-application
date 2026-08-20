@@ -9,7 +9,7 @@
 <h2>Mina böcker</h2>
 
 <div class="book-list">
-    @for (book of bookService.books; track $index) {
+    @for (book of bookService.books; track $index; let i = $index) {
 
     <div class="book-item">
         <div class="book-info">
@@ -27,6 +27,10 @@
                     Publicerad: {{ book.publicationDate }}
                 </strong>
             </p>
+
+            <button [routerLink]="['/books/edit', i]">
+                Redigera
+            </button>
         </div>
     </div>
     }
