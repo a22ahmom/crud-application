@@ -1,1 +1,16 @@
-<p>edit-book works!</p>
+<h1>Redigera bok</h1>
+
+<form (ngSubmit)="saveBook()">
+
+    <label for="title">Titel</label>
+    <input type="text" id="title" name="title" [(ngModel)]="title">
+
+    <label for="author">Författare</label>
+    <input type="text" id="author" name="author" [(ngModel)]="author">
+
+    <label for="publicationDate">Publiceringsdatum</label>
+    <input type="date" id="publicationDate" name="publicationDate" [(ngModel)]="publicationDate">
+
+    <button type="submit">Spara ändringar</button>
+
+</form>
