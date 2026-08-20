@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book-service';
+import { Book } from '../models/book';
 
 @Component({
   selector: 'app-edit-book',
@@ -11,7 +12,7 @@ import { BookService } from '../book-service';
 })
 export class EditBook {
 
-  bookIndex: number;
+  bookId: number;
 
   title = '';
   author = '';
@@ -23,11 +24,13 @@ export class EditBook {
     private bookService: BookService
   ){
 
-    this.bookIndex = Number(
+    this.bookId = Number(
       this.route.snapshot.paramMap.get('id')
     );
 
-    const book = this.bookService.books[this.bookIndex];
+    const book = this.bookService.books.find(
+      book => book.id === this.bookId
+    );
 
     if (book) {
       this.title = book.title;
@@ -38,14 +41,15 @@ export class EditBook {
 
   saveBook(){
 
-    const updatedBook = {
+    const updatedBook: Book = {
+      id: this.bookId,
       title: this.title,
       author: this.author,
       publicationDate: this.publicationDate
     };
 
     this.bookService.updateBook(
-      this.bookIndex,
+      this.bookId,
       updatedBook
     );
 
