@@ -22,4 +22,15 @@ export class BookService {
       this.books[index] = updatedBook;
     }
   }
+
+  deleteBook(id: number) {
+    
+    const index = this.books.findIndex(
+      book => book.id === id
+    );
+
+    if (index !== -1){
+      this.books.splice(index, 1);
+    }
+  }
 }
