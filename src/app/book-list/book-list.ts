@@ -11,4 +11,8 @@ import { BookService } from '../book-service';
 export class BookList {
 
   constructor(public bookService: BookService){}
+
+  deleteBook(id: number) {
+    this.bookService.deleteBook(id);
+  }
 }
