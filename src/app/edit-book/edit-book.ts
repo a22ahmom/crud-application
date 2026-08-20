@@ -35,4 +35,20 @@ export class EditBook {
       this.publicationDate = book.publicationDate;
     }
   }
+
+  saveBook(){
+
+    const updatedBook = {
+      title: this.title,
+      author: this.author,
+      publicationDate: this.publicationDate
+    };
+
+    this.bookService.updateBook(
+      this.bookIndex,
+      updatedBook
+    );
+
+    this.router.navigate(['/books']);
+  }
 }

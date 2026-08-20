@@ -10,4 +10,8 @@ export class BookService {
   addBook(book: any){
     this.books.push(book);
   }
+
+  updateBook(index: number, updatedBook: any) {
+    this.books[index] = updatedBook;
+  }
 }
