@@ -13,7 +13,10 @@ export class BookService {
   }
 
   updateBook(id: number, updatedBook: Book) {
-    const index = this.books.findIndex(book => book.id === id);
+
+    const index = this.books.findIndex(
+      book => book.id === id
+    );
 
     if (index !== -1){
       this.books[index] = updatedBook;
