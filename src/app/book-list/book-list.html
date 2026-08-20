@@ -31,6 +31,10 @@
             <button [routerLink]="['/books/edit', book.id]">
                 Redigera
             </button>
+
+            <button (click)="deleteBook(book.id)">
+                Radera
+            </button>
         </div>
     </div>
     }
