@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BookService } from '../book-service';
 
 @Component({
   selector: 'app-book-list',
@@ -7,4 +8,7 @@ import { RouterLink } from '@angular/router';
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
 })
-export class BookList {}
+export class BookList {
+
+  constructor(public bookService: BookService){}
+}

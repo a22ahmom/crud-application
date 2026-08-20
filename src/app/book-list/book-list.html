@@ -1,3 +1,25 @@
+<h1>Min boksamling</h1>
+
 <div class="container">
-    <button routerLink="/books/new">Lägg till ny bok</button>
+    <button routerLink="/books/new">
+        Lägg till ny bok
+    </button>
 </div>
+
+<h2>Mina böcker</h2>
+
+@for (book of bookService.books; track $index) {
+
+    <div class="book">
+
+        <h3>{{ book.title }}</h3>
+
+        <p>
+            Författare: {{ book.author }}
+        </p>
+
+        <p>
+            Publicerad: {{ book.publicationDate }}
+        </p>
+    </div>
+}

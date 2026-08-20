@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BookService } from '../book-service';
 
 @Component({
   selector: 'app-add-book',
-  imports: [RouterLink, FormsModule],
+  imports: [FormsModule],
   templateUrl: './add-book.html',
   styleUrl: './add-book.css',
 })
@@ -29,6 +28,8 @@ export class AddBook {
       publicationDate: this.publicationDate
     };
 
+    console.log('Ny bok:', newBook);
+    
     this.bookService.addBook(newBook);
 
     this.router.navigate(['/books']);
