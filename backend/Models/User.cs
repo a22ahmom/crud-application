@@ -1,6 +1,6 @@
 public class User{
 
-    public int It { get; set; }
+    public int Id { get; set; }
 
     public string Username { get; set; } = string.Empty;
 
