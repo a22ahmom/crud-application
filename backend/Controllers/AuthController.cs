@@ -78,7 +78,12 @@ public class AuthController : ControllerBase
             return Unauthorized("Fel användarnamn eller lösenord.");
         }
 
-        return Ok("Inloggningen lyckades!");
+        var token = CreateToken(user);
+
+        return Ok(new
+        {
+            token = token
+        });
     }
 
     private string CreateToken(User user)
