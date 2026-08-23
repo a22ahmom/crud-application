@@ -1,0 +1,7 @@
+post http://localhost:5170/api/Auth/register
+Content-Type: application/json
+
+{
+    "username": "anna",
+    "password": "secret123"
+}
