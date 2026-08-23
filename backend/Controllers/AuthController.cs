@@ -12,10 +12,12 @@ namespace backend.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly AppDbContext _context;
+    private readonly IPasswordHasher<User> passwordHasher;
 
-    public AuthController(AppDbContext context)
+    public AuthController(AppDbContext context, IPasswordHasher<User> _passwordHasher)
     {
         _context = context;
+        passwordHasher = _passwordHasher;
     }
 
     [HttpPost("register")]
@@ -34,8 +36,6 @@ public class AuthController : ControllerBase
             Username = request.Username
         };
 
-        var passwordHasher = new PasswordHasher<User>();
-
         user.PasswordHash = passwordHasher.HashPassword(
             user,
             request.Password
@@ -45,5 +45,30 @@ public class AuthController : ControllerBase
         await _context.SaveChangesAsync();
 
         return Ok("Användaren har registrerats");
+    }
+
+    [HttpPost("login")]
+    public async Task<IActionResult> Login(LoginDto request)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(user => user.Username == request.Username);
+
+        if (user == null)
+        {
+            return Unauthorized("Fel användarnamn eller lösenord");
+        }
+
+        var result = passwordHasher.VerifyHashedPassword(
+            user,
+            user.PasswordHash,
+            request.Password
+        );
+
+        if (result == PasswordVerificationResult.Failed)
+        {
+            return Unauthorized("Fel användarnamn eller lösenord.");
+        }
+
+        return Ok("Inloggningen lyckades!");
     }
 }
