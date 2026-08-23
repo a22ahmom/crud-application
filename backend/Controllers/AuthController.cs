@@ -4,6 +4,10 @@ using backend.Data;
 using backend.DTOs;
 using backend.Models;
 using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace backend.Controllers;
 
@@ -13,11 +17,16 @@ public class AuthController : ControllerBase
 {
     private readonly AppDbContext _context;
     private readonly IPasswordHasher<User> _passwordHasher;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(AppDbContext context, IPasswordHasher<User> passwordHasher)
+    public AuthController(
+        AppDbContext context, 
+        IPasswordHasher<User> passwordHasher, 
+        IConfiguration configuration)
     {
         _context = context;
         _passwordHasher = passwordHasher;
+        _configuration = configuration;
     }
 
     [HttpPost("register")]
