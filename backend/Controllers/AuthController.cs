@@ -12,12 +12,12 @@ namespace backend.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly IPasswordHasher<User> passwordHasher;
+    private readonly IPasswordHasher<User> _passwordHasher;
 
-    public AuthController(AppDbContext context, IPasswordHasher<User> _passwordHasher)
+    public AuthController(AppDbContext context, IPasswordHasher<User> passwordHasher)
     {
         _context = context;
-        passwordHasher = _passwordHasher;
+        _passwordHasher = passwordHasher;
     }
 
     [HttpPost("register")]
@@ -36,7 +36,7 @@ public class AuthController : ControllerBase
             Username = request.Username
         };
 
-        user.PasswordHash = passwordHasher.HashPassword(
+        user.PasswordHash = _passwordHasher.HashPassword(
             user,
             request.Password
         );
@@ -58,7 +58,7 @@ public class AuthController : ControllerBase
             return Unauthorized("Fel användarnamn eller lösenord");
         }
 
-        var result = passwordHasher.VerifyHashedPassword(
+        var result = _passwordHasher.VerifyHashedPassword(
             user,
             user.PasswordHash,
             request.Password
