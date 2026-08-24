@@ -17,4 +17,12 @@ public class BooksController : ControllerBase
     {
         _context = context;
     }
+
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
+    {
+        var books = await _context.Books.ToListAsync();
+
+        return Ok(books);
+    }
 }
