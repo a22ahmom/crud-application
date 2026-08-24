@@ -25,4 +25,17 @@ export class Auth {
       }
     );
   }
+
+  login(username: string, password: string)
+  {
+    const body = {
+      username: username,
+      password: password
+    };
+
+    return this.http.post<{ token: string }>(
+      `${this.apiUrl}/login`,
+      body
+    );
+  }
 }
