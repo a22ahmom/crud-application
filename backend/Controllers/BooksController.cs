@@ -52,4 +52,23 @@ public class BooksController : ControllerBase
             book
         );
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> updateBook(int id, Book updatedBook)
+    {
+        var book = await _context.Books.FindAsync(id);
+
+        if (book == null)
+        {
+            return NotFound();
+        }
+
+        book.Title = updatedBook.Title;
+        book.Author = updatedBook.Author;
+        book.PublicationDate = updatedBook.PublicationDate;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
