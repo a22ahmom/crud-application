@@ -32,6 +32,23 @@ export class BookList implements OnInit{
   }
 
   deleteBook(id: number) {
-    this.bookService.deleteBook(id);
+    
+    const confirmed = confirm(
+      'Är du säker på att du vill radera boken?'
+    );
+
+    if (!confirmed){
+      return;
+    }
+
+    this.bookService.deleteBook(id).subscribe({
+      next: () => {
+        this.loadBooks();
+      },
+
+      error: error => {
+        console.error('Kunde inte radera boken:', error);
+      }
+    });
   }
 }

@@ -9,7 +9,7 @@
 <h2>Mina böcker</h2>
 
 <div class="book-list">
-    @for (book of bookService.books; track book.id) {
+    @for (book of books; track book.id) {
 
     <div class="book-item">
         <div class="book-info">
@@ -32,7 +32,7 @@
                 Redigera
             </button>
 
-            <button (click)="deleteBook(book.id)">
+            <button (click)="deleteBook(book.id!)">
                 Radera
             </button>
         </div>
