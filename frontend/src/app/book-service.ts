@@ -1,36 +1,41 @@
 import { Injectable } from '@angular/core';
 import { Book } from './models/book';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BookService {
 
+  private apiURL = 'http://localhost:5170/api/Books';
+
+  constructor(private http: HttpClient){}
+
+  getBooks(){
+    return this.http.get<Book[]>(this.apiURL);
+  }
+
   books: Book[] = [];
 
   addBook(book: Book){
-    this.books.push(book);
+    return this.http.post<Book>(
+      this.apiURL,
+      book
+    );
   }
 
-  updateBook(id: number, updatedBook: Book) {
+  updateBook(id: number, book: Book) {
 
-    const index = this.books.findIndex(
-      book => book.id === id
+    return this.http.put(
+      `${this.apiURL}/${id}`,
+      book
     );
-
-    if (index !== -1){
-      this.books[index] = updatedBook;
-    }
   }
 
   deleteBook(id: number) {
     
-    const index = this.books.findIndex(
-      book => book.id === id
+    return this.http.delete(
+      `${this.apiURL}/${id}`
     );
-
-    if (index !== -1){
-      this.books.splice(index, 1);
-    }
   }
 }
