@@ -54,7 +54,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> updateBook(int id, Book updatedBook)
+    public async Task<IActionResult> UpdateBook(int id, Book updatedBook)
     {
         var book = await _context.Books.FindAsync(id);
 
@@ -73,7 +73,7 @@ public class BooksController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> deleteBook(int id)
+    public async Task<IActionResult> DeleteBook(int id)
     {
         var book = await _context.Books.FindAsync(id);
 
