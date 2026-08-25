@@ -11,11 +11,17 @@ export class BookService {
 
   constructor(private http: HttpClient){}
 
+  books: Book[] = [];
+
   getBooks(){
     return this.http.get<Book[]>(this.apiURL);
   }
 
-  books: Book[] = [];
+  getBook(id: number){
+    return this.http.get<Book>(
+      `${this.apiURL}/${id}`
+    );
+  }
 
   addBook(book: Book){
     return this.http.post<Book>(
