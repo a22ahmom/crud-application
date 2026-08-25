@@ -30,3 +30,9 @@
         Logga in
     </button>
 </form>
+
+@if (errorMessage) {
+    <p class="error">
+        {{ errorMessage }}
+    </p>
+}

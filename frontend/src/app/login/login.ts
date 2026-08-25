@@ -13,6 +13,7 @@ export class Login {
 
   username = '';
   password = '';
+  errorMessage = '';
 
   constructor(
     private authService: Auth,
@@ -20,11 +21,13 @@ export class Login {
   ){}
 
   login() {
+
+    this.errorMessage = '';
+
     this.authService
       .login(this.username, this.password)
       .subscribe({
         next: response => {
-          console.log('JWT:', response.token);
 
           localStorage.setItem(
             'token',
@@ -35,7 +38,14 @@ export class Login {
         },
 
         error: error => {
-          console.error('Inloggningen misslyckades:', error);
+          
+          if (error.status === 401){
+            this.errorMessage =
+              'Fel användarnamn eller lösenord.';
+          } else {
+            this.errorMessage =
+              'Något gick fel. Försök igen.';
+          }
         }
       });
   }
