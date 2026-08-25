@@ -38,4 +38,8 @@ export class Auth {
       body
     );
   }
+
+  logout() {
+    localStorage.removeItem('token');
+  }
 }
