@@ -4,6 +4,7 @@ import { BookList } from './book-list/book-list';
 import { EditBook } from './edit-book/edit-book';
 import { Login } from './login/login';
 import { Register } from './register/register';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -21,14 +22,17 @@ export const routes: Routes = [
     },
     {
         path: 'books',
-        component: BookList
+        component: BookList,
+        canActivate: [authGuard]
     },
     {
         path: 'books/new',
-        component: AddBook
+        component: AddBook,
+        canActivate: [authGuard]
     },
     {
         path: 'books/edit/:id',
-        component: EditBook
+        component: EditBook,
+        canActivate: [authGuard]
     }
 ];
