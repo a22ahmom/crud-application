@@ -24,16 +24,21 @@ export class AddBook {
   addBook(){
 
     const newBook: Book = {
-      id: Date.now(),
       title: this.title,
       author: this.author,
       publicationDate: this.publicationDate
     };
 
-    console.log('Ny bok:', newBook);
-    
-    this.bookService.addBook(newBook);
+    this.bookService.addBook(newBook).subscribe({
+      next: book => {
+        console.log('Boken skapades:', book);
 
-    this.router.navigate(['/books']);
+        this.router.navigate(['/books']);
+      },
+
+      error: error => {
+        console.error('Kunde inte skapa boken:', error);
+      }
+    });
   }
 }
