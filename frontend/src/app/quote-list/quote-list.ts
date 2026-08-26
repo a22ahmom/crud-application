@@ -1,9 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { QuoteService } from '../services/quote-service';
+import { Quote } from '../models/quote';
 
 @Component({
   selector: 'app-quote-list',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './quote-list.html',
   styleUrl: './quote-list.css',
 })
-export class QuoteList {}
+export class QuoteList implements OnInit{
+
+  quotes: Quote[] = [];
+
+  constructor(
+    private quoteService: QuoteService
+  ) {}
+
+  ngOnInit() {
+    this.loadQuotes();
+  }
+
+  loadQuotes() {
+    this.quoteService.getQuotes().subscribe({
+      next: quotes => {
+        this.quotes = quotes;
+      },
+
+      error: error => {
+        console.error(
+          'Kunde inte hämta citaten',
+          error
+        );
+      }
+    });
+  }
+
+  deleteQuote(id: number) {
+
+    const confirmed = confirm(
+      'Är du säker på att du vill radera citaten?'
+    );
+
+    if (!confirmed) {
+      return;
+    }
+
+    this.quoteService.deleteQuote(id).subscribe({
+      next: () => {
+        this.loadQuotes();
+      },
+
+      error: error => {
+        console.error(
+          'Kunde inte radera citaten:',
+          error
+        );
+      }
+    });
+  }
+}
