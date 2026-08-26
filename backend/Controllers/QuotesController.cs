@@ -54,7 +54,7 @@ public class QuotesController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<ActionResult> UpdateQuote(
+    public async Task<IActionResult> UpdateQuote(
         int id,
         Quote updatedQuote
     )
