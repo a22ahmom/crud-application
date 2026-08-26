@@ -1,1 +1,32 @@
-<p>quote-list works!</p>
+<h1>Mina citat</h1>
+
+<button routerLink="/quotes/new">
+    Lägg till nytt citat
+</button>
+
+<div class="quote-list">
+
+    @for (quote of quotes; track quote.id) {
+        
+        <div class="quote-item">
+
+            <blockquote>
+                "{{ quote.text }}"
+            </blockquote>
+
+            <p>
+                — {{ quote.author }}
+            </p>
+
+            <button
+                routerLink="['/quotes/edit', quote.id]">
+                Redigera
+            </button>
+
+            <button
+                (click)="deleteQuote(quote.id!)">
+                Radera
+            </button>
+        </div>
+    }
+</div>
