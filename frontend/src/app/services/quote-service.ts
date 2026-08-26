@@ -5,4 +5,39 @@ import { Quote } from '../models/quote';
 @Injectable({
   providedIn: 'root',
 })
-export class QuoteService {}
+export class QuoteService {
+
+  private apiUrl = 'http://localhost:5170/api/Quotes';
+
+  constructor(private http: HttpClient) {}
+
+  getQuotes() {
+    return this.http.get<Quote[]>(this.apiUrl);
+  }
+
+  getQuote(id: number) {
+    return this.http.get<Quote>(
+      `${this.apiUrl}/${id}`
+    )
+  }
+
+  addQuote(quote: Quote) {
+    return this.http.post<Quote>(
+      this.apiUrl,
+      quote
+    );
+  }
+
+  updateQuote(id: number, quote: Quote) {
+    return this.http.put(
+      `${this.apiUrl}/${id}`,
+      quote
+    );
+  }
+
+  deleteQuote(id: number) {
+    return this.http.delete(
+      `${this.apiUrl}/${id}`
+    );
+  }
+}
