@@ -25,4 +25,17 @@ public class QuotesController : ControllerBase
 
         return Ok(quotes);
     }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Quote>> GetQuote(int id)
+    {
+        var quote = await _context.Quotes.FindAsync(id);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(quote);
+    }
 }
