@@ -73,4 +73,21 @@ public class QuotesController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteQuote(int id)
+    {
+        var quote = await _context.Quotes.FindAsync(id);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+
+        _context.Quotes.Remove(quote);
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
