@@ -1,1 +1,22 @@
-<p>add-quote works!</p>
+<h1>Lägg till citat</h1>
+
+<form (ngSubmit)="addQuote">
+
+    <div>
+        <label for="text">Citat</label>
+
+        <textarea id="text" name="text" [(ngModel)]="text" required>
+        </textarea>
+    </div>
+
+    <div>
+        <label for="author">Författare</label>
+
+        <input id="author" type="text" name="author" [(ngModel)]="author" required>
+    </div>
+
+    <button type="submit">
+        Lägg till citat
+    </button>
+
+</form>
