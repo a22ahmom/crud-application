@@ -52,4 +52,25 @@ public class QuotesController : ControllerBase
             quote
         );
     }
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateQuote(
+        int id,
+        Quote updatedQuote
+    )
+    {
+        var quote = await _context.Quotes.FindAsync(id);
+
+        if (quote == null)
+        {
+            return NotFound();
+        }
+
+        quote.Text = updatedQuote.Text;
+        quote.Author = updatedQuote.Author;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
