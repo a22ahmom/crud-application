@@ -38,4 +38,18 @@ public class QuotesController : ControllerBase
 
         return Ok(quote);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<Quote>> CreateQuote(Quote quote)
+    {
+        _context.Quotes.Add(quote);
+
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(
+            nameof(GetQuote),
+            new { id = quote.Id},
+            quote
+        );
+    }
 }
