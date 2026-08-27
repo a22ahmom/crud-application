@@ -1,11 +1,42 @@
-<nav>
-    <a routerLink="/books">
-        Mina böcker
-    </a>
+<nav class="navbar">
 
-    <a routerLink="/quotes">
-        Mina citat
-    </a>
+    <div class="navbar-inner">
+
+        <span class="brand">
+            Bokappen
+        </span>
+
+        <button
+            class="menu-button"
+            type="button"
+            (click)="toggleMenu()"
+            aria-label="Öppna meny">
+            ☰
+        </button>
+
+        <div
+            class="nav-links"
+            [class.open]="menuOpen">
+
+            <a
+                routerLink="/books"
+                routerLinkActive="active"
+                (click)="closeMenu()">
+                Mina böcker
+            </a>
+
+            <a
+                routerLink="/quotes"
+                routerLinkActive="active"
+                (click)="closeMenu()">
+                Mina citat
+            </a>
+
+            <button (click)="logout()">
+                Logga ut
+            </button>
+        </div>
+    </div>
 </nav>
 
 <main class="container">
