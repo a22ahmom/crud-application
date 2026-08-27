@@ -9,4 +9,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './app.css'
 })
 export class App {
+
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
+  closeMenu() {
+    this.menuOpen = false;
+  }
 }
