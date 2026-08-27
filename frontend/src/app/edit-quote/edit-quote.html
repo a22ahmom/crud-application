@@ -1,14 +1,14 @@
 <h1>Redigera citat</h1>
 
-<form (ngSubmit)="saveQuote()">
+<form (ngSubmit)="saveQuote()" class="form">
 
-    <div>
+    <div class="form-group">
         <label for="text">Citat</label>
 
         <textarea id="text" name="text" [(ngModel)]="text" required></textarea>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="author">Författare</label>
 
         <input id="author" type="text" name="author" [(ngModel)]="author" required>

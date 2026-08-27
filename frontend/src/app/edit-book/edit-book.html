@@ -1,15 +1,36 @@
 <h1>Redigera bok</h1>
 
-<form (ngSubmit)="saveBook()">
+<form (ngSubmit)="saveBook()" class="form">
 
-    <label for="title">Titel</label>
-    <input type="text" id="title" name="title" [(ngModel)]="title">
+    <div class="form-group">
+        <label for="title">Titel</label>
 
-    <label for="author">Författare</label>
-    <input type="text" id="author" name="author" [(ngModel)]="author">
+        <input 
+            type="text" 
+            id="title" 
+            name="title" 
+            [(ngModel)]="title">
+    </div>
 
-    <label for="publicationDate">Publiceringsdatum</label>
-    <input type="date" id="publicationDate" name="publicationDate" [(ngModel)]="publicationDate">
+    <div class="form-group">
+        <label for="author">Författare</label>
+
+        <input 
+            type="text" 
+            id="author" 
+            name="author" 
+            [(ngModel)]="author">
+    </div>
+
+    <div class="form-group">
+        <label for="publicationDate">Publiceringsdatum</label>
+
+        <input 
+            type="date" 
+            id="publicationDate" 
+            name="publicationDate" 
+            [(ngModel)]="publicationDate">
+    </div>
 
     <button type="submit">Spara ändringar</button>
 
