@@ -9,10 +9,11 @@
 <h2>Mina böcker</h2>
 
 <div class="book-list">
+
     @for (book of books; track book.id) {
 
     <article class="book-item">
-        
+
         <h3>{{ book.title }}</h3>
 
         <p>
@@ -27,13 +28,16 @@
             </strong>
         </p>
 
-        <button [routerLink]="['/books/edit', book.id]">
-            Redigera
-        </button>
+        <div class="actions">
+            <button [routerLink]="['/books/edit', book.id]">
+                Redigera
+            </button>
 
-        <button (click)="deleteBook(book.id!)">
-            Radera
-        </button>
+            <button (click)="deleteBook(book.id!)">
+                Radera
+            </button>
+        </div>
+
     </article>
     }
 </div>

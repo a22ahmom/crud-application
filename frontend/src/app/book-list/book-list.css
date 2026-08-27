@@ -14,3 +14,13 @@
     border-radius: 8px;
     padding: 20px;
 }
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.actions button {
+    padding: 10px 14px;
+}

@@ -7,26 +7,27 @@
 <div class="quote-list">
 
     @for (quote of quotes; track quote.id) {
-        
-        <div class="quote-item">
 
-            <blockquote>
-                "{{ quote.text }}"
-            </blockquote>
+    <article class="quote-item">
 
-            <p>
-                — {{ quote.author }}
-            </p>
+        <blockquote>
+            "{{ quote.text }}"
+        </blockquote>
 
-            <button
-                [routerLink]="['/quotes/edit', quote.id]">
+        <p>
+            — {{ quote.author }}
+        </p>
+
+        <div class="actions">
+            <button [routerLink]="['/quotes/edit', quote.id]">
                 Redigera
             </button>
 
-            <button
-                (click)="deleteQuote(quote.id!)">
+            <button (click)="deleteQuote(quote.id!)">
                 Radera
             </button>
         </div>
+
+    </article>
     }
 </div>
