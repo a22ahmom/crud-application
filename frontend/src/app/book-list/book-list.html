@@ -11,32 +11,30 @@
 <div class="book-list">
     @for (book of books; track book.id) {
 
-    <div class="book-item">
-        <div class="book-info">
+    <article class="book-item">
+        
+        <h3>{{ book.title }}</h3>
 
-            <h3>{{ book.title }}</h3>
+        <p>
+            <strong>
+                Författare: {{ book.author }}
+            </strong>
+        </p>
 
-            <p>
-                <strong>
-                    Författare: {{ book.author }}
-                </strong>
-            </p>
+        <p>
+            <strong>
+                Publicerad: {{ book.publicationDate }}
+            </strong>
+        </p>
 
-            <p>
-                <strong>
-                    Publicerad: {{ book.publicationDate }}
-                </strong>
-            </p>
+        <button [routerLink]="['/books/edit', book.id]">
+            Redigera
+        </button>
 
-            <button [routerLink]="['/books/edit', book.id]">
-                Redigera
-            </button>
-
-            <button (click)="deleteBook(book.id!)">
-                Radera
-            </button>
-        </div>
-    </div>
+        <button (click)="deleteBook(book.id!)">
+            Radera
+        </button>
+    </article>
     }
 </div>
 
