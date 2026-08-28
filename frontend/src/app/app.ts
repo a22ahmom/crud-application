@@ -14,7 +14,7 @@ export class App {
   menuOpen = false;
 
   constructor(
-    private authService: Auth,
+    public authService: Auth,
     private router: Router
   ){}
 

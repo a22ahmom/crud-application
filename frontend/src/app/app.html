@@ -6,36 +6,39 @@
             Bokappen
         </span>
 
-        <button
-            class="menu-button"
-            type="button"
-            (click)="toggleMenu()"
-            aria-label="Öppna meny">
-            ☰
-        </button>
+        @if (authService.isLoggedIn()){
 
-        <div
-            class="nav-links"
-            [class.open]="menuOpen">
-
-            <a
-                routerLink="/books"
-                routerLinkActive="active"
-                (click)="closeMenu()">
-                Mina böcker
-            </a>
-
-            <a
-                routerLink="/quotes"
-                routerLinkActive="active"
-                (click)="closeMenu()">
-                Mina citat
-            </a>
-
-            <button type="button" (click)="logout()">
-                Logga ut
+            <button
+                class="menu-button"
+                type="button"
+                (click)="toggleMenu()"
+                aria-label="Öppna meny">
+                ☰
             </button>
-        </div>
+
+            <div
+                class="nav-links"
+                [class.open]="menuOpen">
+
+                <a
+                    routerLink="/books"
+                    routerLinkActive="active"
+                    (click)="closeMenu()">
+                    Mina böcker
+                </a>
+
+                <a
+                    routerLink="/quotes"
+                    routerLinkActive="active"
+                    (click)="closeMenu()">
+                    Mina citat
+                </a>
+
+                <button type="button" (click)="logout()">
+                    Logga ut
+                </button>
+            </div>
+        }
     </div>
 </nav>
 
