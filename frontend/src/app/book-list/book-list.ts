@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { BookService } from '../book-service';
 import { Book } from '../models/book';
-import { Router } from '@angular/router';
-import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-book-list',
@@ -16,9 +14,7 @@ export class BookList implements OnInit{
   books: Book[] = [];
 
   constructor(
-    private bookService: BookService,
-    private authService: Auth,
-    private router: Router
+    private bookService: BookService
   ){}
 
   ngOnInit(): void {
@@ -56,11 +52,5 @@ export class BookList implements OnInit{
         console.error('Kunde inte radera boken:', error);
       }
     });
-  }
-
-  logout() {
-    this.authService.logout();
-
-    this.router.navigate(['/login']);
   }
 }
