@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Auth } from './services/auth';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,22 @@ export class App {
 
   menuOpen = false;
 
+  constructor(
+    private authService: Auth,
+    private router: Router
+  ){}
+
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
 
   closeMenu() {
     this.menuOpen = false;
+  }
+
+  logout() {
+    this.authService.logout();
+    this.menuOpen = false;
+    this.router.navigate(['/login']);
   }
 }
