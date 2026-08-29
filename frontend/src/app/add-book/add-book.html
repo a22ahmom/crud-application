@@ -2,12 +2,13 @@
 
     <h2>Ny bok</h2>
 
-    <form (ngSubmit)="addBook()" class="form">
+    <form (ngSubmit)="addBook()">
 
-        <div class="form-group">
-            <label for="title">Titel</label>
+        <div class="mb-3">
+            <label class="form-label" for="title">Titel</label>
 
             <input 
+                class="form-control"
                 type="text" 
                 id="title" 
                 name="title" 
@@ -15,10 +16,11 @@
                 placeholder="Skriv bokens titel">
         </div>
 
-        <div class="form-group">
-            <label for="author">Författare</label>
+        <div class="mb-3">
+            <label class="form-label" for="author">Författare</label>
 
             <input 
+                class="form-control"
                 type="text" 
                 id="author" 
                 name="author" 
@@ -26,10 +28,11 @@
                 placeholder="Skriv bokens författare">
         </div>
 
-        <div class="form-group">
-            <label for="publicationDate">Publiceringsdatum</label>
+        <div class="mb-3">
+            <label class="form-label" for="publicationDate">Publiceringsdatum</label>
 
             <input 
+                class="form-control"
                 type="date" 
                 id="publicationDate" 
                 name="publicationDate" 
@@ -37,6 +40,6 @@
                 placeholder="Skriv bokens publiceringsdatum">
         </div>
 
-        <button type="submit">Skapa</button>
+        <button class="btn btn-primary" type="submit">Skapa</button>
     </form>
 </div>
