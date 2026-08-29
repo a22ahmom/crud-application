@@ -13,6 +13,8 @@ export class Register {
 
   username = '';
   password = '';
+  confirmedPassword = '';
+  errorMessage = '';
 
   constructor(
     private authService: Auth,
@@ -20,6 +22,14 @@ export class Register {
   ){}
 
   register() {
+
+    this.errorMessage = '';
+
+    if (this.password !== this.confirmedPassword) {
+      this.errorMessage = 'Lösenorden matchar inte.';
+      return;
+    }
+
     this.authService
       .register(this.username, this.password)
       .subscribe({

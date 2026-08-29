@@ -26,6 +26,26 @@
         >
     </div>
 
+    <div class="form-group">
+        <label for="confirmedPassword">
+            Bekräfta Lösenord
+        </label>
+
+        <input
+            id="confirmedPassword"
+            type="password"
+            name="confirmedPassword"
+            [(ngModel)]="confirmedPassword"
+            required
+        >
+    </div>
+
+    @if (errorMessage) {
+        <p class="error-message">
+            {{ errorMessage }}
+        </p>
+    }
+
     <button type="submit">
         Registrera
     </button>
