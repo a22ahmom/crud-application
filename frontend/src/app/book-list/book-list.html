@@ -8,36 +8,43 @@
 
 <h2>Mina böcker</h2>
 
-<div class="book-list">
+<div class="row g-4">
 
     @for (book of books; track book.id) {
 
-    <article class="book-item">
+    <div class="col-12 col-md-6 col-lg-4">
 
-        <h3>{{ book.title }}</h3>
+        <div class="card h-100">
 
-        <p>
-            <strong>
-                Författare: {{ book.author }}
-            </strong>
-        </p>
+            <div class="card-body">
 
-        <p>
-            <strong>
-                Publicerad: {{ book.publicationDate }}
-            </strong>
-        </p>
+                <h2 class="card-title h5">
+                    <i class="fa-solid fa-book"></i>
+                    {{ book.title }}
+                </h2>
 
-        <div class="actions">
-            <button [routerLink]="['/books/edit', book.id]">
-                Redigera
-            </button>
+                <p class="card-text">
+                    {{ book.author }}
+                </p>
 
-            <button (click)="deleteBook(book.id!)">
-                Radera
-            </button>
+                <p class="card-text">
+                    {{ book.publicationDate }}
+                </p>
+
+                <div class="d-flex gap-2 flex-wrap">
+
+                    <button class="btn btn-primary" [routerLink]="['/books/edit', book.id]">
+                        <i class="fa-solid fa-pen"></i>
+                        Redigera
+                    </button>
+
+                    <button class="btn btn-danger" (click)="deleteBook(book.id!)">
+                        <i class="fa-solid fa-trash"></i>
+                        Radera
+                    </button>
+                </div>
+            </div>
         </div>
-
-    </article>
+    </div>
     }
 </div>
