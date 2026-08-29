@@ -16,6 +16,8 @@ export class Register {
   confirmedPassword = '';
   errorMessage = '';
 
+  isLoading = false;
+
   constructor(
     private authService: Auth,
     private router: Router
@@ -24,6 +26,7 @@ export class Register {
   register() {
 
     this.errorMessage = '';
+    this.isLoading = true;
 
     if (this.password !== this.confirmedPassword) {
       this.errorMessage = 'Lösenorden matchar inte.';
@@ -36,10 +39,12 @@ export class Register {
         next: response => {
           console.log(response);
 
+          this.isLoading = false;
           this.router.navigate(['/login']);
         },
 
         error: error => {
+          this.isLoading = false;
           console.error('Registreringen misslyckades:', error);
         }
       });

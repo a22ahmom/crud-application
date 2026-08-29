@@ -15,6 +15,8 @@ export class Login {
   password = '';
   errorMessage = '';
 
+  isLoading = false;
+
   constructor(
     private authService: Auth,
     private router: Router
@@ -23,6 +25,7 @@ export class Login {
   login() {
 
     this.errorMessage = '';
+    this.isLoading = true;
 
     this.authService
       .login(this.username, this.password)
@@ -34,10 +37,12 @@ export class Login {
             response.token
           );
 
+          this.isLoading = false;
           this.router.navigate(['/books']);
         },
 
         error: error => {
+          this.isLoading = false;
           
           if (error.status === 401){
             this.errorMessage =
