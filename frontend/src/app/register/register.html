@@ -1,52 +1,52 @@
-<h1>Registrera användare</h1>
+<div class="row justify-content-center">
 
-<form (ngSubmit)="register()" class="form">
+    <div class="col-12 col-md-8 col-lg-5">
 
-    <div class="form-group">
-        <label for="username">Användarnamn</label>
+        <div class="card shadow-sm">
 
-        <input
-            id="username"
-            type="text"
-            name="username"
-            [(ngModel)]="username"
-            required
-        >
+            <div class="card-body p-4">
+
+                <h1 class="h3 mb-3">
+                    <i class="fa-solid fa-user-plus me-2"></i>
+                    Registrera användare
+                </h1>
+
+                <form (ngSubmit)="register()">
+
+                    <div class="mb-3">
+                        <label class="form-label" for="username">Användarnamn</label>
+
+                        <input class="form-control" id="username" type="text" name="username" [(ngModel)]="username" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="password">Lösenord</label>
+
+                        <input class="form-control" id="password" type="password" name="password" [(ngModel)]="password" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="confirmedPassword">
+                            Bekräfta Lösenord
+                        </label>
+
+                        <input class="form-control" id="confirmedPassword" type="password" name="confirmedPassword"
+                            [(ngModel)]="confirmedPassword" required>
+                    </div>
+
+                    @if (errorMessage) {
+                    <div class="alert alert-danger">
+                        {{ errorMessage }}
+                    </div>
+                    }
+
+                    <button class="btn btn-success w-100" type="submit">
+                        
+                        <i class="fa-solid fa-user-plus me-2"></i>
+                        Registrera
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="password">Lösenord</label>
-
-        <input
-            id="password"
-            type="password"
-            name="password"
-            [(ngModel)]="password"
-            required
-        >
-    </div>
-
-    <div class="form-group">
-        <label for="confirmedPassword">
-            Bekräfta Lösenord
-        </label>
-
-        <input
-            id="confirmedPassword"
-            type="password"
-            name="confirmedPassword"
-            [(ngModel)]="confirmedPassword"
-            required
-        >
-    </div>
-
-    @if (errorMessage) {
-        <p class="error-message">
-            {{ errorMessage }}
-        </p>
-    }
-
-    <button type="submit">
-        Registrera
-    </button>
-</form>
+</div>
