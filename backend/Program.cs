@@ -46,7 +46,10 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngular", policy =>
     {
         policy
-            .WithOrigins("http://localhost:4200")
+            .WithOrigins(
+                "http://localhost:4200",
+                "https://fascinating-dodol-12e39f.netlify.app"
+                )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
