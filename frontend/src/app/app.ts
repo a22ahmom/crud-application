@@ -11,24 +11,13 @@ import { Auth } from './services/auth';
 })
 export class App {
 
-  menuOpen = false;
-
   constructor(
     public authService: Auth,
     private router: Router
   ){}
 
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  closeMenu() {
-    this.menuOpen = false;
-  }
-
   logout() {
     this.authService.logout();
-    this.menuOpen = false;
     this.router.navigate(['/login']);
   }
 }
