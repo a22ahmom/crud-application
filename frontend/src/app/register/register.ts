@@ -26,26 +26,31 @@ export class Register {
   register() {
 
     this.errorMessage = '';
-    this.isLoading = true;
 
     if (this.password !== this.confirmedPassword) {
       this.errorMessage = 'Lösenorden matchar inte.';
       return;
     }
 
+    this.isLoading = true;
+
     this.authService
       .register(this.username, this.password)
       .subscribe({
         next: response => {
-          console.log(response);
-
           this.isLoading = false;
+          console.log(response);
           this.router.navigate(['/login']);
         },
 
         error: error => {
           this.isLoading = false;
-          console.error('Registreringen misslyckades:', error);
+
+          if (error.status === 409 || error.status === 400) {
+            this.errorMessage = 'Användarnamnet finns redan.';
+          } else {
+            this.errorMessage = 'Något fick fel. Försök igen.';
+          }
         }
       });
   }
