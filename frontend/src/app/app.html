@@ -1,55 +1,71 @@
-<nav class="navbar">
+<nav class="navbar navbar-expand-md bg-body-tertiary">
 
-    <div class="navbar-inner">
+    <div class="container">
 
-        <span class="brand">
+        <a class="navbar-brand" routerLink="/">
+            <i class="fa-solid fa-book"></i>
             Bokappen
-        </span>
+        </a>
 
         @if (authService.isLoggedIn()) {
 
             <button
-                class="menu-button"
+                class="navbar-toggler"
                 type="button"
-                (click)="toggleMenu()"
-                aria-label="Öppna meny">
-                ☰
+                data-bs-toggle="collapse"
+                data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar"
+                aria-expanded="false"
+                aria-label="Visa navigation">
+                
+                <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div
-                class="nav-links"
-                [class.open]="menuOpen">
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <div class="navbar-nav ms-auto">
 
-                <a
-                    routerLink="/books"
-                    routerLinkActive="active"
-                    (click)="closeMenu()">
-                    Mina böcker
-                </a>
+                    <a
+                        class="nav-link"
+                        routerLink="/books"
+                        routerLinkActive="active">
 
-                <a
-                    routerLink="/quotes"
-                    routerLinkActive="active"
-                    (click)="closeMenu()">
-                    Mina citat
-                </a>
+                        <i class="fa-solid fa-book-open"></i>
+                        Mina böcker
+                    </a>
 
-                <button type="button" (click)="logout()">
-                    Logga ut
-                </button>
+                    <a
+                        class="nav-link"
+                        routerLink="/quotes"
+                        routerLinkActive="active">
+
+                        <i class="fa-solid fa-quote-left"></i>
+                        Mina citat
+                    </a>
+
+                    <button class="btn btn-outline-danger ms-md-2" type="button" (click)="logout()">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                        Logga ut
+                    </button>
+                </div>
             </div>
         } @else {
-            <div class="nav-links guest-links">
+            <div class="navbar-nav ms-auto">
 
                 <a
+                    class="nav-link"
                     routerLink="/login"
                     routerLinkActive="active">
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
                     Logga in
                 </a>
 
                 <a
+                    class="nav-link"
                     routerLink="/register"
                     routerLinkActive="active">
+
+                    <i class="fa-solid fa-user-plus"></i>
                     Registrera
                 </a>
             </div>
@@ -57,6 +73,6 @@
     </div>
 </nav>
 
-<main class="container">
+<main class="container py-4">
     <router-outlet />
 </main>
