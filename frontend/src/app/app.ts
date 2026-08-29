@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Auth } from './services/auth';
@@ -9,7 +9,7 @@ import { Auth } from './services/auth';
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
 
   isDarkMode = false;
 
@@ -17,6 +17,10 @@ export class App {
     public authService: Auth,
     private router: Router
   ){}
+
+  ngOnInit() {
+    this.loadTheme();
+  }
 
   logout() {
     this.authService.logout();
