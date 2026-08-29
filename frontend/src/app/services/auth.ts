@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class Auth {
 
-  private apiUrl = 'http://localhost:5170/api/Auth';
+  private apiUrl = 'https://crud-application-34e5.onrender.com/api/Auth';
 
   constructor(private http: HttpClient) {}
 

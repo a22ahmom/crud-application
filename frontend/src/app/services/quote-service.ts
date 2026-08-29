@@ -7,7 +7,7 @@ import { Quote } from '../models/quote';
 })
 export class QuoteService {
 
-  private apiUrl = 'http://localhost:5170/api/Quotes';
+  private apiUrl = 'https://crud-application-34e5.onrender.com/api/Quotes';
 
   constructor(private http: HttpClient) {}
 
