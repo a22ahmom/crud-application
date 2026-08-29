@@ -4,30 +4,40 @@
     Lägg till nytt citat
 </button>
 
-<div class="quote-list">
+<div class="row g-4">
 
     @for (quote of quotes; track quote.id) {
 
-    <div class="quote-item">
+    <div class="col-12 col-md-6 col-lg-4">
 
-        <blockquote>
-            "{{ quote.text }}"
-        </blockquote>
+        <div class="card h-100">
 
-        <p>
-            — {{ quote.author }}
-        </p>
+            <div class="card-body">
 
-        <div class="actions">
-            <button [routerLink]="['/quotes/edit', quote.id]">
-                Redigera
-            </button>
+                <i class="fa-solid fa-quote-left"></i>
 
-            <button (click)="deleteQuote(quote.id!)">
-                Radera
-            </button>
+                <blockquote class="blockquote">
+                    "{{ quote.text }}"
+                </blockquote>
+
+                <p class="text-muted">
+                    — {{ quote.author }}
+                </p>
+
+                <div class="d-flex gap-2 flex-wrap">
+
+                    <button class="btn btn-primary" [routerLink]="['/quotes/edit', quote.id]">
+                        <i class="fa-solid fa-pen"></i>
+                        Redigera
+                    </button>
+
+                    <button class="btn btn-danger" (click)="deleteQuote(quote.id!)">
+                        <i class="fa-solid fa-trash"></i>
+                        Radera
+                    </button>
+                </div>
+            </div>
         </div>
-
     </div>
     }
 </div>
