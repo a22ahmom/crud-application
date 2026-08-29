@@ -9,66 +9,72 @@
 
         @if (authService.isLoggedIn()) {
 
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#mainNavbar"
-                aria-controls="mainNavbar"
-                aria-expanded="false"
-                aria-label="Visa navigation">
-                
-                <span class="navbar-toggler-icon"></span>
-            </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="Visa navigation">
 
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <div class="navbar-nav ms-auto">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <a
-                        class="nav-link"
-                        routerLink="/books"
-                        routerLinkActive="active">
-
-                        <i class="fa-solid fa-book-open"></i>
-                        Mina böcker
-                    </a>
-
-                    <a
-                        class="nav-link"
-                        routerLink="/quotes"
-                        routerLinkActive="active">
-
-                        <i class="fa-solid fa-quote-left"></i>
-                        Mina citat
-                    </a>
-
-                    <button class="btn btn-outline-danger ms-md-2" type="button" (click)="logout()">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        Logga ut
-                    </button>
-                </div>
-            </div>
-        } @else {
+        <div class="collapse navbar-collapse" id="mainNavbar">
             <div class="navbar-nav ms-auto">
 
-                <a
-                    class="nav-link"
-                    routerLink="/login"
-                    routerLinkActive="active">
+                <a class="nav-link" routerLink="/books" routerLinkActive="active">
 
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    Logga in
+                    <i class="fa-solid fa-book-open"></i>
+                    Mina böcker
                 </a>
 
-                <a
-                    class="nav-link"
-                    routerLink="/register"
-                    routerLinkActive="active">
+                <a class="nav-link" routerLink="/quotes" routerLinkActive="active">
 
-                    <i class="fa-solid fa-user-plus"></i>
-                    Registrera
+                    <i class="fa-solid fa-quote-left"></i>
+                    Mina citat
                 </a>
+
+                <button class="btn btn-outline-secondary" type="button" (click)="toggleTheme()"
+                    [title]="isDarkMode ? 'Byt till ljust läge' : 'Byt till mörkt läge'"
+                    aria-label="Växla mellan ljust och mörkt läge">
+
+                    @if (isDarkMode) {
+                    <i class="fa-solid fa-sun"></i>
+                    } @else {
+                    <i class="fa-solid fa-moon"></i>
+                    }
+
+                </button>
+
+                <button class="btn btn-outline-danger ms-md-2" type="button" (click)="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    Logga ut
+                </button>
             </div>
+        </div>
+        } @else {
+        <div class="navbar-nav ms-auto">
+
+            <a class="nav-link" routerLink="/login" routerLinkActive="active">
+
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Logga in
+            </a>
+
+            <a class="nav-link" routerLink="/register" routerLinkActive="active">
+
+                <i class="fa-solid fa-user-plus"></i>
+                Registrera
+            </a>
+
+            <button class="btn btn-outline-secondary" type="button" (click)="toggleTheme()"
+                [title]="isDarkMode ? 'Byt till ljust läge' : 'Byt till mörkt läge'"
+                aria-label="Växla mellan ljust och mörkt läge">
+
+                @if (isDarkMode) {
+                <i class="fa-solid fa-sun"></i>
+                } @else {
+                <i class="fa-solid fa-moon"></i>
+                }
+
+            </button>
+        </div>
         }
     </div>
 </nav>
