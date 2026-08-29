@@ -6,7 +6,7 @@
             Bokappen
         </span>
 
-        @if (authService.isLoggedIn()){
+        @if (authService.isLoggedIn()) {
 
             <button
                 class="menu-button"
@@ -37,6 +37,21 @@
                 <button type="button" (click)="logout()">
                     Logga ut
                 </button>
+            </div>
+        } @else {
+            <div class="nav-links guest-links">
+
+                <a
+                    routerLink="/login"
+                    routerLinkActive="active">
+                    Logga in
+                </a>
+
+                <a
+                    routerLink="/register"
+                    routerLinkActive="active">
+                    Registrera
+                </a>
             </div>
         }
     </div>

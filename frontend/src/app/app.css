@@ -85,4 +85,11 @@ button {
         padding: 12px;
         text-align: left;
     }
+
+    .guest-links {
+        display: flex;
+        width: auto;
+        flex-direction: row;
+        align-items: center;
+    }
 }
