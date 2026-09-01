@@ -31,11 +31,12 @@
                     — {{ quote.author }}
                 </p>
 
-                @if (quote.user) {
+                @if (quote.username) {
                     <small class="text-body-secondary">
                         <i class="fa-solid fa-user me-1"></i>
-                        Tillagd av {{ quote.user.username }}
+                        Tillagd av {{ quote.username }}
                     </small>
+                    <br>
                 }
 
                 @if (isOwner(quote)) {

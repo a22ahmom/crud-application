@@ -20,10 +20,18 @@ public class QuotesController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Quote>>> GetQuotes()
+    public async Task<IActionResult> GetQuotes()
     {
         var quotes = await _context.Quotes
             .Include(q => q.User)
+            .Select(q => new
+            {
+                q.Id,
+                q.Text,
+                q.Author,
+                q.UserId,
+                Username = q.User != null ? q.User.Username : ""
+            })
             .ToListAsync();
 
         return Ok(quotes);

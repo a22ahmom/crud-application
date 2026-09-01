@@ -3,9 +3,5 @@ export interface Quote {
     text: string,
     author: string
     userId?: number;
-
-    user?: {
-        id: number;
-        username: string;
-    };
+    username?: string;
 }
