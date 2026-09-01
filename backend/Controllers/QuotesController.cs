@@ -101,11 +101,23 @@ public class QuotesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteQuote(int id)
     {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(userIdString, out var userId))
+        {
+            return Unauthorized();
+        }
+
         var quote = await _context.Quotes.FindAsync(id);
 
         if (quote == null)
         {
             return NotFound();
+        }
+
+        if (quote.UserId != userId)
+        {
+            return Forbid();
         }
 
         _context.Quotes.Remove(quote);
