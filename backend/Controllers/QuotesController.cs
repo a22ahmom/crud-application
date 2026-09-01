@@ -45,8 +45,17 @@ public class QuotesController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Quote>> CreateQuote(Quote quote)
     {
-        _context.Quotes.Add(quote);
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
+        if (!int.TryParse(userIdString, out var userId))
+        {
+            return Unauthorized();
+        }
+
+        quote.UserId = userId;
+        quote.User = null;
+
+        _context.Quotes.Add(quote);
         await _context.SaveChangesAsync();
 
         return CreatedAtAction(
