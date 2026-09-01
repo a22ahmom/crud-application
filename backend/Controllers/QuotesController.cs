@@ -71,11 +71,23 @@ public class QuotesController : ControllerBase
         Quote updatedQuote
     )
     {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (!int.TryParse(userIdString, out var userId))
+        {
+            return Unauthorized();
+        }
+
         var quote = await _context.Quotes.FindAsync(id);
 
         if (quote == null)
         {
             return NotFound();
+        }
+
+        if (quote.UserId != userId)
+        {
+            return Forbid();
         }
 
         quote.Text = updatedQuote.Text;
