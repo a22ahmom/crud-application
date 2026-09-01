@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { QuoteService } from '../services/quote-service';
 import { Quote } from '../models/quote';
+import { Auth } from '../services/auth';
 
 @Component({
   selector: 'app-quote-list',
@@ -14,7 +15,8 @@ export class QuoteList implements OnInit{
   quotes: Quote[] = [];
 
   constructor(
-    private quoteService: QuoteService
+    private quoteService: QuoteService,
+    public authService: Auth
   ) {}
 
   ngOnInit() {
@@ -58,5 +60,12 @@ export class QuoteList implements OnInit{
         );
       }
     });
+  }
+
+  isOwner(quote: Quote): boolean {
+    const currentUserId = this.authService.getCurrentUserId();
+
+    return currentUserId !== null &&
+      quote.userId === currentUserId;
   }
 }
