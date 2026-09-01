@@ -3,6 +3,7 @@ using backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
 
 namespace backend.Controllers;
 
@@ -21,7 +22,9 @@ public class QuotesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Quote>>> GetQuotes()
     {
-        var quotes = await _context.Quotes.ToListAsync();
+        var quotes = await _context.Quotes
+            .Include(q => q.User)
+            .ToListAsync();
 
         return Ok(quotes);
     }
