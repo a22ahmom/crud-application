@@ -3,7 +3,7 @@
     <h1 class="mb-0">Mina citat</h1>
 
     <button class="btn btn-success" routerLink="/quotes/new">
-        
+
         <i class="fa-solid fa-plus me-2"></i>
         Lägg till nytt citat
 
@@ -31,6 +31,14 @@
                     — {{ quote.author }}
                 </p>
 
+                @if (quote.user) {
+                    <small class="text-body-secondary">
+                        <i class="fa-solid fa-user me-1"></i>
+                        Tillagd av {{ quote.user.username }}
+                    </small>
+                }
+
+                @if (isOwner(quote)) {
                 <div class="mt-auto d-flex gap-2 flex-wrap">
 
                     <button class="btn btn-primary" [routerLink]="['/quotes/edit', quote.id]">
@@ -43,6 +51,8 @@
                         Radera
                     </button>
                 </div>
+                }
+
             </div>
         </div>
     </div>
