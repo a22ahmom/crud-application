@@ -141,3 +141,5 @@ C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\Mi
 C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\Npgsql.dll
+C:\Users\sahan\Desktop\Redcode Test\crud-application\backend\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
