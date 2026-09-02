@@ -8,5 +8,5 @@ public class Book
 
     public string Author { get; set; } = string.Empty;
 
-    public DateTime PublicationDate { get; set; }
+    public DateOnly PublicationDate { get; set; }
 }
